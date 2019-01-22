@@ -1,0 +1,25 @@
+{
+  "name": "planetar_e",
+  "main": "index.js",
+  "homepage": "https://github.com/eafflu/planetar_e",
+  "authors": [
+    "Edem Afflu <edemakuaafflu@gmail.com>"
+  ],
+  "description": "Gaming Library",
+  "keywords": [
+    "video",
+    "games",
+    "fun"
+    ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
+}
