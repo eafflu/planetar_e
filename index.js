@@ -2,7 +2,17 @@
     
   window.planetar_e = window.planetar_e || {
     
-    numz:{},
+    numz:{
+      getDistance(pointA, pointB){
+        const
+          distanceX = pointB.x - pointA.x,
+          distanceY = pointB.y - pointA.y,
+          distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY)
+        
+          
+          
+      }
+    },
     phyz:{},
       
   };
