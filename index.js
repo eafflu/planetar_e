@@ -62,7 +62,7 @@
            * @param {Object} An object containing the properties x and y (pair of points).
            */
            
-          getDistance(pointA, pointB){
+          getDistance: function(pointA, pointB){
             const
               distanceX = pointB.x - pointA.x,
               distanceY = pointB.y - pointA.y
