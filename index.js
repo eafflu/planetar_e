@@ -24,6 +24,17 @@
        * force of impact of a collision.
        * @return {Object} The body.
        */
+        /**
+           * @param {Object} An object containing the properties x and y (pair of points).
+           * @param {Object} An object containing the properties x and y (pair of points).
+           */
+           
+      getDistance: function(pointA, pointB){
+            const
+              distanceX = pointB.x - pointA.x,
+              distanceY = pointB.y - pointA.y
+              return Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+          },
       makeBody: function(type, {
         velocityX = 0,
         velocityY = 0,
@@ -57,17 +68,7 @@
           update(event) {
             // template method //
           },
-          /**
-           * @param {Object} An object containing the properties x and y (pair of points).
-           * @param {Object} An object containing the properties x and y (pair of points).
-           */
-           
-          getDistance: function(pointA, pointB){
-            const
-              distanceX = pointB.x - pointA.x,
-              distanceY = pointB.y - pointA.y
-              return Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-          },
+         
 
           
         };
