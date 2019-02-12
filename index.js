@@ -1,11 +1,19 @@
 (function(window, _) {
   window.planetar_e = window.planetar_e || {
     numz: {
-      degreesToRadians: function(degrees){
+      getAngleDegrees: (pointA, pointB) =>{
+        const
+          distanceX = pointB.x - pointA.x,
+          distanceY = pointB.y - pointA.y,
+          radians = Math.atan2(distanceY, distanceX)
+          return radians * 180 / Math.PI;
+        
+      },
+      degreesToRadians: degrees => {
         return degrees * Math.PI / 180;
       },
       
-      radiansToDegrees: function(radians){
+      radiansToDegrees: radians => {
         return radians * 180 / Math.PI;
       }
       
