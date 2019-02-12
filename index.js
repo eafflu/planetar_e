@@ -1,22 +1,22 @@
 (function(window, _) {
   window.planetar_e = window.planetar_e || {
     numz: {
-      getAngleDegrees:function (pointA, pointB) {
+      getAngleDegrees: function(pointA, pointB) {
         const
           distanceX = pointB.x - pointA.x,
           distanceY = pointB.y - pointA.y,
           radians = Math.atan2(distanceY, distanceX)
-          return radians * 180 / Math.PI;
-        
+        return radians * 180 / Math.PI;
+
       },
       degreesToRadians: function(degrees) {
         return degrees * Math.PI / 180;
       },
-      
+
       radiansToDegrees: function(radians) {
         return radians * 180 / Math.PI;
       }
-      
+
     },
     phyz: {
       /**
@@ -41,19 +41,42 @@
        * force of impact of a collision.
        * @return {Object} The body.
        */
-       
-      /**
-        * @param {Object} An object containing the properties x and y (pair of points).
-        * @param {Object} An object containing the properties x and y (pair of points).
-       */
-           
-      getDistance: function(pointA, pointB){
-            const
-              distanceX = pointB.x - pointA.x,
-              distanceY = pointB.y - pointA.y
-              return Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+      updateVelocity: function(body, forceOnX, forceOnY) {
+        const
+          angle = body.rotation * Math.PI / 180,
+          accelerationOnX = Math.cos(angle) * forceOnX,
+          accelerationOnY = Math.sin(angle) * forceOnY;
+        body.velocityX += accelerationOnX;
+        body.velocityY += accelerationOnY;
       },
-      
+      /**
+       * Updates the x and y properties of a body based on its
+       * velocityX and velocityY, and, updates the rotation of
+       * a body based on its rotationalVelocity.
+       *
+       * @param {Object} body: The body must be an Object 
+       * with x, y, rotation, velocityX, velocityY, and 
+       * rotationalVelocity properties.
+       */
+      updatePosition: function(body) {
+        body.x += body.velocityX;
+        body.y += body.velocityY;
+        body.rotation += body.rotationalVelocity;
+      },
+
+
+      /**
+       * @param {Object} An object containing the properties x and y (pair of points).
+       * @param {Object} An object containing the properties x and y (pair of points).
+       */
+
+      getDistance: function(pointA, pointB) {
+        const
+          distanceX = pointB.x - pointA.x,
+          distanceY = pointB.y - pointA.y
+        return Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+      },
+
       makeBody: function(type, {
         velocityX = 0,
         velocityY = 0,
@@ -79,7 +102,7 @@
           handleCollision(impact, body) {
             // template method //
           },
-          
+
           /**
            * Can be overridden in the concrete body to provide a custom update()
            * method.
@@ -87,9 +110,9 @@
           update(event) {
             // template method //
           },
-         
 
-          
+
+
         };
       },
     },
